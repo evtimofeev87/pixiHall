@@ -1,7 +1,10 @@
 import * as PIXI from 'pixi.js';
 import '@pixi/math-extras';
-import { createPlace } from './helpers'
 import CanvasController from "./canvasController";
+import PanController from "./panController";
+import SelectionController from "./selectionController";
+import ZoomController from "./zoomController"
+import PlacesController from "./placesController";
 
 const canvasElement = <HTMLCanvasElement> document.getElementById('hall');
 
@@ -19,13 +22,33 @@ const hallContainer = new PIXI.Container();
 
 app.stage.addChild(hallContainer);
 
-hallContainer.addChild( createPlace(50,50,80,80,6,'43'));
-hallContainer.addChild( createPlace(200,50,80,80,6,'44'));
-hallContainer.addChild( createPlace(50,200,80,80,6,'45'));
-hallContainer.addChild( createPlace(200,200,80,80,6,'46'));
+const placesController = new PlacesController(hallContainer,app.renderer,app);
 
-const canvasController = new CanvasController(app.stage, hallContainer);
+const selectionController = new SelectionController(app.stage);
+const panController = new PanController(hallContainer, placesController);
+const zoomController = new ZoomController(hallContainer, placesController);
+
+
+
+const canvasController = new CanvasController({
+    selectionController,
+    panController,
+    zoomController
+});
 canvasController.addListeners(canvasElement);
+
+
+
+const onBuildButtonClick = () => {
+    const placeNumber = <HTMLInputElement> document.getElementById('places_number');
+    placesController.drawPlaces(Number(placeNumber.value));
+}
+
+document
+    .getElementById('build_button')
+    .addEventListener('click', onBuildButtonClick)
+
+
 
 
 
