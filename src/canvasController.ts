@@ -9,6 +9,7 @@ export default class {
     selectionController: SelectionController;
     panController: PanController;
     zoomController: ZoomController;
+    isClick: boolean = false;
 
     constructor({
         selectionController,
@@ -33,6 +34,8 @@ export default class {
     }
 
     onMouseDown(e: MouseEvent) {
+        console.log('down');
+        this.isClick = true;
         if(e.shiftKey) {
             this.selectionController.start(e);
         } else {
@@ -41,11 +44,16 @@ export default class {
     }
 
     onMouseUp(e: MouseEvent) {
+        if(this.isClick){
+            this.selectionController.selectObject(e);
+        }
         this.selectionController.end(e);
         this.panController.end();
     }
 
     onMouseMove(e: MouseEvent) {
+        this.isClick = false;
+        console.log('move');
         this.selectionController.move(e);
         this.panController.move(e);
     }
@@ -54,4 +62,5 @@ export default class {
         e.preventDefault();
         this.zoomController.zoom(e);
     }
+
 }
