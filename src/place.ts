@@ -3,6 +3,7 @@ import * as PIXI from 'pixi.js';
 export default class Place {
     position: PIXI.Point
     text: string;
+    selected: boolean = false;
 
     placeGraphics: PIXI.Graphics;
     placeText: PIXI.Text;
@@ -25,22 +26,44 @@ export default class Place {
 
     draw(globalContainer: PIXI.Container, texture: PIXI.Texture) {
 
-        this.placeSprite = this.createSprite(texture);
-        globalContainer.addChild(this.placeSprite);
+        // this.placeSprite = this.createSprite(texture);
+        // globalContainer.addChild(this.placeSprite);
 
         // this.placeContainer.addChild(this.placeSprite);
 
         // this.placeGraphics = this.createGraphics()
         // this.placeContainer.addChild(this.placeGraphics);
 
-        this.placeText = this.createText();
-        globalContainer.addChild(this.placeText);
+        // this.placeText = this.createText();
+        // globalContainer.addChild(this.placeText);
 
         // this.placeContainer.interactive = true;
         // this.placeContainer.on('pointerdown', () => console.log(this.text));
 
 
 
+    }
+
+    addGraphics(graphics: PIXI.Graphics,color: number) {
+        graphics
+            .lineStyle(2, color, 1)
+            .beginFill(color, 1)
+
+            // .drawRoundedRect(
+            //     this.position.x-Place.width/2,
+            //     this.position.y-Place.height/2,
+            //     Place.width,
+            //     Place.height,
+            //     Place.radius)
+
+            .drawRect(
+                this.position.x-Place.width/2,
+                this.position.y-Place.height/2,
+                Place.width,
+                Place.height)
+
+            .endFill();
+        return graphics
     }
 
     createGraphics() {

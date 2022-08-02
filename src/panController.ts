@@ -35,7 +35,7 @@ export default class {
         this.hall.position.copyFrom(this.hall.position.add(moveVector));
         this.dragStartPoint = dragEndPoint.clone();
 
-        this.placesController.optimize();
+        // this.placesController.optimize();
     }
 
 }

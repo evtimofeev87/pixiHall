@@ -24,7 +24,7 @@ app.stage.addChild(hallContainer);
 
 const placesController = new PlacesController(hallContainer,app.renderer,app);
 
-const selectionController = new SelectionController(app.stage);
+const selectionController = new SelectionController(app.stage, hallContainer, placesController);
 const panController = new PanController(hallContainer, placesController);
 const zoomController = new ZoomController(hallContainer, placesController);
 
