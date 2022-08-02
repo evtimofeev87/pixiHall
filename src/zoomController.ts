@@ -6,7 +6,7 @@ export default class {
     hall: PIXI.Container;
     placesController: PlacesController
 
-    constructor(hall, placesController: PlacesController) {
+    constructor(hall: PIXI.Container, placesController: PlacesController) {
         this.hall = hall;
         this.placesController = placesController;
     }
@@ -27,6 +27,6 @@ export default class {
         this.hall.position.copyFrom(newHallPosition);
         this.hall.scale.copyFrom(newScale);
 
-        this.placesController.optimize();
+        // this.placesController.optimize();
     }
 }
