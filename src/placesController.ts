@@ -58,7 +58,6 @@ export default class {
     }
 
     optimize() {
-
         let {width, height} = Place;
         const scaleRatio = this.container.scale.x;
         width *= scaleRatio;
@@ -80,12 +79,7 @@ export default class {
                 this.placesArray[i].setVisibility(true);
                 this.placesArray[i].setTextVisibility(height > 10);
             }
-
-
-
         }
-
-
     }
 
     selectPlaces(selectionRect: PIXI.Rectangle) {
@@ -116,7 +110,6 @@ export default class {
                     alreadySelected++;
                 }
             }
-
         }
         let selectedMark = true;
         if(selectedPlaces.length === alreadySelected) {
@@ -140,5 +133,4 @@ export default class {
     selectPlace(position: PIXI.IPointData) {
 
     }
-
 }

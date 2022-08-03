@@ -28,16 +28,13 @@ const selectionController = new SelectionController(app.stage, hallContainer, pl
 const panController = new PanController(hallContainer, placesController);
 const zoomController = new ZoomController(hallContainer, placesController);
 
-
-
 const canvasController = new CanvasController({
     selectionController,
     panController,
     zoomController
 });
+
 canvasController.addListeners(canvasElement);
-
-
 
 const onBuildButtonClick = () => {
     const placeNumber = <HTMLInputElement> document.getElementById('places_number');

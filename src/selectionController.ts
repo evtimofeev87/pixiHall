@@ -38,8 +38,6 @@ export default class {
         this.placesController.selectPlaces(localSelectionRect);
 
         this.selectionRect.copyFrom(PIXI.Rectangle.EMPTY);
-
-
     }
 
     move(e: MouseEvent) {
@@ -51,8 +49,6 @@ export default class {
         const rectY1 = Math.min(this.selectionStartPoint.y,e.offsetY);
         const rectX2 = Math.max(this.selectionStartPoint.x,e.offsetX);
         const rectY2 = Math.max(this.selectionStartPoint.y,e.offsetY);
-
-
 
         this.selectionRect.x = rectX1;
         this.selectionRect.y = rectY1;

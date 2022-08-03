@@ -15,7 +15,6 @@ export default class {
         this.placesController = placesController;
     }
 
-
     start(e: MouseEvent) {
         this.dragStartPoint = new PIXI.Point(e.offsetX,e.offsetY);
         this.dragging = true;
